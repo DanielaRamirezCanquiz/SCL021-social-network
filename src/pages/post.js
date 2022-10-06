@@ -1,7 +1,7 @@
 import { signOutGoogle, getPost, addPost } from "../firebase.js";
 
 export const post = () => {
-  const container = document.createElement('div');
+  const container = document.createElement("div");
   const html = `
   <div class= "postView" >
   <div class="headerPost">
@@ -11,7 +11,7 @@ export const post = () => {
       <div class ="btnMenuHeader">
     <button type="button" class="buttonHome"><img class="imgBtnHome" src="./img/home.png"></button>
     <button type="button" class="buttonSaved"><img class="imgBtnSaved" src="./img/saved.png"></button>
-    <button type="button" class="buttonSignOff"><img class="imgBtnSignOut" src="./img/signout.png"></button>
+    <button type="button" class="buttonSignOff1"><img class="imgBtnSignOut" src="./img/signout.png"></button>
     </div>
     </div>
   </div>
@@ -44,15 +44,21 @@ export const post = () => {
 </div> `;
   container.innerHTML = html;
 
-  const btnSignOff = container.querySelector('.buttonSignOff');
-  btnSignOff.addEventListener('click', () => {
+  const btnSignOff1 = container.querySelector(".buttonSignOff1");
+  btnSignOff1.addEventListener("click", () => {
     signOutGoogle();
-  });  
+    console.log("aqui estoy soy el boton");
+  });
+  const btnSignOff = container.querySelector(".buttonSignOff");
+  btnSignOff.addEventListener("click", () => {
+    signOutGoogle();
+    console.log("aqui estoy soy el boton dos");
+  });
 
-  const btnSend = container.querySelector('.buttonPost');
+  const btnSend = container.querySelector(".buttonPost");
   const printPost = container.querySelector("#printPost");
   const drawPost = (post) => {
-     const postHtml = `
+    const postHtml = `
      <div class ="infoPost">
         <div class="namePost">
           <p>${post.name}</p> 
@@ -63,13 +69,13 @@ export const post = () => {
         </div>
      </div>
      `;
-     const postDiv = document.createElement("div");
-     postDiv.className = "divPost";
-     postDiv.innerHTML = postHtml;
-     printPost.appendChild(postDiv);
+    const postDiv = document.createElement("div");
+    postDiv.className = "divPost";
+    postDiv.innerHTML = postHtml;
+    printPost.appendChild(postDiv);
     console.log("Yo estoy dentro de drawPost", post);
-  } 
-  btnSend.addEventListener('click', () => {
+  };
+  btnSend.addEventListener("click", () => {
     container.querySelector("#printPost").innerHTML = "";
     //container.querySelector(".name").innerHTML = "";
     getPost(drawPost);

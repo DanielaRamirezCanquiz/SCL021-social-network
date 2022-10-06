@@ -1,11 +1,13 @@
+//importamos las vistas
 import { login } from "../pages/login.js";
 import { post } from "../pages/post.js";
 
 // const rootDiv = document.getElementById('root');
-export const routes = {
 
-  '/': login(),
-  '/post': post(),
+//creamos una variable con objetos y se colocaron las rutas, que importamos en main.js
+export const routes = {
+  "/": login(),
+  "/post": post(),
 };
 
 // export const onNavigate = (pathname) => {
@@ -16,7 +18,7 @@ export const routes = {
 //     )
 //     rootDiv.innerHTML = routes[pathname];
 //   }
-  
+
 // export const routes = {
 //     login: {
 //         path: '/',
