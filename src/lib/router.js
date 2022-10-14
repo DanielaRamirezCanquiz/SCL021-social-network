@@ -4,7 +4,7 @@ import { post } from "../pages/post.js";
 
 // const rootDiv = document.getElementById('root');
 
-//creamos una variable con objetos y se colocaron las rutas, que importamos en main.js
+//creamos una variable para darle valor a la propiedad pathname y se colocaron las rutas, que importamos en main.js
 export const routes = {
   "/": login(),
   "/post": post(),

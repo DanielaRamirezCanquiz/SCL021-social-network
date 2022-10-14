@@ -1,21 +1,8 @@
 /* eslint-disable import/no-unresolved */
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  query,
-  onSnapshot,
-} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithRedirect,
-  getRedirectResult,
-  signOut,
-} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs, query, onSnapshot,} from "https://www.gstatic.com/firebasejs/9.9.4/firebase-firestore.js";
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult,signOut, } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-auth.js";
 import { onNavigate } from "../main.js";
 //import { post } from "../pages/post.js";
 
@@ -24,6 +11,9 @@ import { onNavigate } from "../main.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+//Configuración de Firebase 
+
 const firebaseConfig = {
   apiKey: "AIzaSyCcmRcn_Cf0UNCMSgEPO0IwaraE8bQEg5U",
   authDomain: "true-lache.firebaseapp.com",
@@ -34,14 +24,16 @@ const firebaseConfig = {
   measurementId: "G-EPCZ497K2S",
 };
 
-// Initialize Firebase
+// Inialización de Firebase
+
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 // export default { db, auth };
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-//ingresar con google
+//Ingreso con google
+
 export const loginWithGoogle = () => {
   signInWithRedirect(auth, provider);
   getRedirectResult(auth)
@@ -65,7 +57,8 @@ export const loginWithGoogle = () => {
   return onNavigate("/post");
 };
 
-//Sign Out Google
+//Cerrar sesión Google
+
 export const signOutGoogle = () => {
   signOut(auth)
     .then(() => {
@@ -77,7 +70,10 @@ export const signOutGoogle = () => {
       // console.log(error.message);
     });
 };
-//agregar post a la nube de firebase
+
+
+//Agregar post a la nube de firebase
+
 export const addPost = async () => {
   const post = document.getElementById("inputPost").value;
   const nameUser = document.getElementById("name").value;
@@ -91,8 +87,9 @@ export const addPost = async () => {
 };
 
 //Ver en consola los post de la nube
-// finalPost corresponde a tareaFinal
+//FinalPost corresponde a tareaFinal
 //imprimir los post al muro
+
 export const getPost = async (finalPost) => {
   // const posts = [];
   // const postDiv = document.getElementById('printPost');
